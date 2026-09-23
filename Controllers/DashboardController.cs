@@ -1,12 +1,14 @@
 ﻿using CrudBackend_1_.Data;
 using CrudBackend_1_.Dto;
 using CrudBackend_1_.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CrudBackend_1_.Controllers
 {
     [Route("Dashboard")]
+    [Authorize] // This attribute ensures that only authenticated users can access the actions in this controller.
     public class DashboardController(AppDBContextcs context) : Controller
     {
         // GET: /Dashboard
