@@ -1,0 +1,37 @@
+﻿@using CrudBackend_1_.Dto;
+@model UserDto
+
+<div class="d-flex flex-column justify-content-center align-items-center min-vh-100 bg-light">
+    <div>@ViewBag.successMessage</div>
+    <div>@ViewBag.ErrorMessage</div>
+    <form class="p-4 bg-white rounded-4 shadow" style="width: 100%; max-width: 400px;" asp-action="LoginUser">
+
+        <h2 class="text-center mb-4">Login</h2>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email"
+                   class="form-control form-control-lg"
+                   id="email"
+                   placeholder="Enter your email"
+                   name="email"
+                   asp-for="Email" />
+        </div>
+
+        <div class="mb-4">
+            <label for="password" class="form-label">Password</label>
+            <input type="password"
+                   class="form-control form-control-lg"
+                   id="password"
+                   placeholder="Enter your password"
+                   name="password"
+                   asp-for="Password" />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg w-100">
+            Login
+        </button>
+
+    </form>
+	<a href="/Auth/Register" class="btn btn-link mt-3">Don't have an account? Register</a>
+</div>

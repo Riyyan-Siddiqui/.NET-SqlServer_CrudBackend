@@ -1,0 +1,68 @@
+﻿@using CrudBackend_1_.Dto;
+@model List<ProductDto>
+
+<div class="container py-5">
+
+	<!-- Header -->
+	<div class="d-flex justify-content-between align-items-center mb-4">
+		<h2 class="fw-bold mb-0">Products</h2>
+
+		<a class="btn btn-primary" asp-action="AddProductForm">
+			<i class="bi bi-plus-lg"></i> Add Product
+		</a>
+	</div>
+
+	<!-- Products Table -->
+	<div class="card border-0 shadow-sm rounded-4">
+		<div class="card-body p-0">
+			<div class="table-responsive">
+				<table class="table table-hover align-middle mb-0">
+
+					<thead class="table-light">
+						<tr>
+							<th class="px-4">Product Name</th>
+							<th>Description</th>
+							<th>Price</th>
+							<th>Color</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						@if (Model.Count > 0)
+						{
+							foreach (var product in Model)
+							{
+
+								<tr>
+									<td class="px-4 fw-semibold">@product.ProductName</td>
+									<td>@product.Description</td>
+									<td>@product.Price</td>
+									<td>@product.Color</td>
+									<td>
+										<a class="btn btn-sm btn-outline-primary" asp-action="EditProduct" asp-route-productid="@product.Id">
+											Edit
+										</a>
+									</td>
+									<td>
+										<a class="btn btn-sm btn-outline-danger" asp-action="DeleteProduct" asp-route-productid="@product.Id">
+											Delete
+										</a>
+									</td>
+								</tr>
+
+							}
+						}
+						else
+						{
+							<tr>No Products Found</tr>
+						}
+					</tbody>
+
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>

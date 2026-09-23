@@ -1,0 +1,68 @@
+﻿@using CrudBackend_1_.Dto
+@model ProductDto
+
+<div class="d-flex flex-column justify-content-center align-items-center min-vh-100 bg-light">
+
+	<form class="p-4 bg-white rounded-4 shadow"
+		  style="width: 100%; max-width: 500px;"
+		  asp-action="@(Model.Id == 0 ? "CreateProduct" : "EditProduct")" method="post">
+
+		<h2 class="text-center mb-4">
+			@(Model.Id == 0 ? "Add Product" : "Edit Product")
+		</h2>
+
+		@if (Model.Id != 0)
+		{
+			<input type="hidden" asp-for="Id" />
+		}
+
+		<div class="mb-3">
+			<label asp-for="ProductName" class="form-label">
+				Product Name
+			</label>
+
+			<input asp-for="ProductName"
+				   class="form-control form-control-lg"
+				   placeholder="Enter product name" />
+		</div>
+
+		<div class="mb-3">
+			<label asp-for="Description" class="form-label">
+				Description
+			</label>
+
+			<textarea asp-for="Description"
+					  class="form-control"
+					  rows="4"
+					  placeholder="Enter product description">
+            </textarea>
+		</div>
+
+		<div class="mb-3">
+			<label asp-for="Price" class="form-label">
+				Price
+			</label>
+
+			<input asp-for="Price"
+				   type="number"
+				   class="form-control form-control-lg"
+				   placeholder="Enter product price" />
+		</div>
+
+		<div class="mb-4">
+			<label asp-for="Color" class="form-label">
+				Color
+			</label>
+
+			<input asp-for="Color"
+				   class="form-control form-control-lg"
+				   placeholder="Enter product color" />
+		</div>
+
+		<button type="submit" class="btn btn-primary btn-lg w-100">
+			@(Model.Id == 0 ? "Add Product" : "Update Product")
+		</button>
+
+	</form>
+
+</div>
